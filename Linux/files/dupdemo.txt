@@ -1,0 +1,3 @@
+Sample string one
+Sample string two
+Sample string three
