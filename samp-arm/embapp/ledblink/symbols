@@ -1,0 +1,5 @@
+00100000 t $a
+0010000c t $a
+00100060 T app_main
+0010000c T digi_init
+00100000 T start

@@ -1,0 +1,39 @@
+CROSS = arm-elf-
+
+CC =     $(CROSS)gcc
+AS =     $(CROSS)as
+AR =     $(CROSS)ar
+LD =     $(CROSS)ld
+NM =     $(CROSS)nm
+RM =     del 
+OBJCOPY = $(CROSS)objcopy
+
+CFLAGS = -fno-builtin -nostdlib -I.
+#AFLAGS = -mapcs-32 -msoft-float -mno-fpu -I.
+AFLAGS = -mapcs-32  -I.
+LDFLAGS= $(CFLAGS) -Wl,-elf2flt
+
+.EXPORT_ALL_VARIABLES:
+
+
+OBJ = head.o  app.o bsp.o xmodem.o flash.o 
+
+
+app.bin: $(OBJ)
+	$(LD) -p -X -T app.ld $(OBJ) -o app
+	$(OBJCOPY) -O binary \
+		--only-section=.init \
+		--only-section=.text \
+		--only-section=.rodata \
+		--only-section=.data \
+		--only-section=.bss app app.bin
+
+clean:
+	$(RM) -rf *.o app app.bin 
+
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+%.o: %.S
+	$(CC) $(AFLAGS) -c -o $@ $<
