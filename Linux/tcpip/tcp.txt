@@ -1,0 +1,487 @@
+                              TCP Design
+
+The most important data structure in the tcp module is TCP Control Block
+which is of type tcpcb_t. These control blocks are maintained in two
+separate linked lists. These are 'listenTcbs' and 'nonListenTcbs'.
+
+The 'listenTcbs' contains all the TCP CBs associated with LISTEN sockets.
+All the other control blocks which are in other than LISTEN state are
+maintained in this list.
+
+
+typedef struct tcpcb_s
+{
+  struct tcpcb_s *pnxt;
+  struct tcpcb_s *pprv;
+
+  UINT32 sockIndx;
+
+  struct tcpcb_s *listenQ[MAX_LQ_SIZE];
+  struct tcpcb_s *lPtr;
+  UINT32 lqcnt;
+  UINT32 lqmax;
+
+  UINT32 timerid;
+  UINT32 retrys;
+  UINT32 tmout;
+  UINT32 rtriptime;
+
+  SEMID  mxsem;   // mutex semaphore
+  SEMID  rxsem;   // rx and connect sync semaphore
+  SEMID  txsem;   // tx sync semaphore
+
+  UINT16 state;
+  UINT16 lport;   // local port
+  UINT8  lip[4];  // local ip
+  UINT8  rip[4];  // remote ip
+  UINT16 rport;   // remote port 
+
+  UINT32 flags;  // BIND_FLG :1
+  INT32  errNo;  //  
+
+  // Transmission flow sequence numbers
+  UINT32 isn;    // Initial sequence number
+  UINT32 nsn;    // Next sequence number to use for next data packet
+  UINT32 lasn;   // Last acknowledged sequence number
+  UINT32 avlsn;  // Upto this sequence number data is available in tx buf
+  UINT32 alsn;   // Data is allowed to send upto this sequence number
+  UINT32 rwin;   // remote window size
+
+  UINT8 *txbuf;
+  UINT32 twix;    // txbuf write index
+  UINT32 trix;    // txbuf read index
+  UINT32 tcnt;    // txbuf count of bytes
+ 
+  // Receive flow sequence number
+  UINT32 nrsn    // Expected sequence number of next data(upto prev sn rxcvd)
+  UINT32 lwin    // Local window size to receive
+
+  UINT8 *rxbuf;
+  UINT32 rwix;    // rxbuf write index
+  UINT32 rrix;    // rxbuf read index
+  UINT32 rcnt;    // rxbuf count of bytes
+
+  pktbuf_t  *sendPkt; //to retransmit in timer task
+}tcpcb_t;
+
+Events from Application tasks
+
+    socket event 
+    bind event
+    listen event
+    accept event
+    connect event
+    send/write event
+    recv/read event
+    close event
+
+Events from Timer task
+
+   timeout event
+
+Events from Net task
+
+   Syn event
+   Syn+Ack event
+   Data event
+   Ack event
+   Fin event
+
+Application event handling functions
+====================================
+tcpcb_t *tcpSocket()
+{
+  //Allocate memory for tcpcb_t structure
+  //Initialize the structure to zero using memset() function
+  //Create all the three semaphores with mutex semaphore with 1 token and
+  // others with zero tokens.
+  //Set the state to CLOSED
+  ** No need to add to any linked list(i.e listenCbList or nonListenCbList)
+  ** at this stage
+}
+
+INT32 tcpBind(tcpcb_t *tcb, struct sockaddr *addr, int len)
+{
+  //Initialize the local IP and local port number with the values
+  //  present in the sockaddr structure
+  //Set bind bit in flags field to 1.
+}
+
+INT32 tcpListen(tcpcb_t *tcb, int qlen)
+{
+  //Set the state of tcb to LISTEN state
+  //set 'lqmax' field to this qlen.
+  ** Add this tcb to listenCbList.
+}
+
+tcpcb_t *tcpConnect(tcpcb_t *tcb, struct sockaddr_in *adr, int *adrlen)
+{
+  //Allocate memory for rxbuf and txbufs 
+  //Chose initial sequence number and save it in 'isn' also set 'nsn' to isn+1
+  //Allocate and prepare SYN packet and send it by calling IPSend function.
+  //Set state to SYN_SENT
+  //Start timer with 250 milliseconds timeout. Store timer Id in timerid field
+  //Set 'retrys' to zero and 'tmout' to 250.
+  //Block on the rxsem till state changes to ESTABLISHED or 'errNo' is set.
+  ** semaphore can come from either netTask(tcpSynAckEvtProc) or from
+     timerTask(tcpTimeout)
+}
+
+/******************************************************************************
+Observed Test Cases for 'connect':
+---------------------------------
+1.For testing timeout conditions, if we send incorrect checksum in SYN packet
+  then it is droped by otherside and didn't send SYN+ACK.So we can check max-
+  retrys(eg:5) with timeout 250 milliseconds.
+
+2.For testing RST packet coming or not, if we send SYN packet to the port on 
+  other side which is not used then it will send RST packet.
+
+Pending Test Cases for 'connect':
+--------------------------------
+1.If SYN+ACK is send by other side & lost then we will retransmit SYN
+  again after timeout.other side also retransmit SYN+ACK ???
+
+2.Howmany times it will retransmit(howmuch timeout) SYN+ACK,if we are not 
+  responding with proper ACK(eg. incorrect checksum ???).Is it retransmit SYN+
+  ACK,if ACK checksum will fail ? Is it retransmits SYN+ACK if we free this
+  packet,without sending ACK ? or if ACK lost
+******************************************************************************/
+
+tcpcb_t *tcpAccept(tcpcb_t *tcb, struct sockaddr_in *adr, int *adrlen)
+{
+  //Verify that TCP is in LISTEN state, else return error.
+  //Verify that in the listen queue already connected sockets
+  // available (i.e.lqcnt > 0).
+  //If connected sockets are available return pointer to that tcpcb_st
+  //  structure. Before returning fill the  adr structure with client
+  //  addres by taking it from tcpcb_t pointer.(which is in listenQ) 
+  //If no connected sockets are available in listen queue block on rxsem
+  //  till connected tcp control blocks are available.
+}
+
+tcpcb_t *tcpAccept(tcpcb_t *tcb, struct sockaddr_in *adr, int *adrlen)
+{
+  //Verify that TCP is in LISTEN state, else return error.
+  ** if(lqcnt>0)
+  ** {   
+  **   lqcnt--; 
+  **   fill sockaddr_in structure taking listenQ[lqcnt] address.
+  **   return listenQ[lqcnt];
+  ** }     
+  ** while(lqcnt==0)
+  ** {
+  **   semTake();
+  **   lqcnt--; 
+  **   fill sockaddr_in structure taking listenQ[lqcnt] address.
+  **   return listenQ[lqcnt];
+  ** }
+}
+
+/******************************************************************************
+Observed Test Cases for 'accept':
+---------------------------------
+
+Pending Test Cases for 'accept':
+--------------------------------
+1. When we received SYN pkt,what happend if we are not respond with SYN+ACK ?
+   i.e. Howmany times the client sends SYN pkt with howmuch timeout ?
+
+2. What happend if our SYN+ACK lost ? 
+   i.e is the client retransmit SYN upto SYN+ACK received and at the same time 
+   we are also retransmit upto ACK comes from the server side.
+
+3. What happend if ACK lost which is sent by the client ?
+   i.e we retransmit the SYN+ACK upto ACK comes.  
+
+4. Upto Howmany clients are accepted by this.Each Time we are giving semaphore
+   from netTask,when ACK comes(in tcpAckEvtProc).But here we are not taking
+   that semaphore each time(i.e. only for the 1st client)
+
+
+******************************************************************************/
+
+int tcprecv(tcpcb_t *tcb, ui8 *buf,  i32 len)
+{
+  //State should be ESTABLISHED or FIN_WAIT2 else return error 
+  //Block on rxsem semaphore if no data is available in rx buffer.
+  //If tcb state is CLOSE_WAIT then return 0
+  //If data is available copy required data into application buf supplied.
+  ** i.e if length of the data in rx buf is greater or equal to the given
+             "len" copy data of "len" 
+         ** memcpy(buf,tcb->rxbuf,len);
+         ** rrix = rrix+len;
+         ** rcnt = rcnt-len;  
+      ** else copy length of data in rx buf.
+         ** memcpy(buf,tcb->rxbuf,rcnt);
+         ** rrix = rrix+rcnt;
+         ** rcnt = rcnt-rcnt;** i.e. 0  ???  
+  //call tcpReadEvtProc() function to do any actions on read event
+  //return the length of the data copied to application buffer.
+}
+ 
+void tcpReadEvtProc() 
+{
+       
+}
+
+int tcpsend(tcpcb_t *tcb, ui8 *buf,  i32 len)
+{
+  //Copy data into txbuf till space is available.
+  ** tcb->alsn = (tcb->nsn) + (tcb->rwin > MAX_TX_BUF) ?  MAX_TX_BUF : tcb->rwin;
+  //call tcpWriteEvtProc() function to do any actions on write event
+  //If all data is written return with len.
+  ** avlLen = tcb->alsn - tcb->isn;
+  ** if(len <= avlLen)
+  ** {
+  **   memcpy(tcb->txbuf+tcb->twix,buf,len);
+  **   return len;
+  ** }
+  //If all data is not written to txbuf, block on txsem till space is
+  //  available. As and when space is available, write that much data and
+  //  wait further to write remaining data.
+  ** else
+  ** {
+  **   memcpy(tcb->txbuf+tcb->twix,buf,avlLen);
+  **   fillLen = len - avlLen;
+  **   while(fillLen<len)
+  **   {
+  **     semTake();
+  **     avlLen = tcb->alsn - tcb->isn;
+  **     memcpy(tcb->txbuf+tcb->twix,buf,avlLen);
+  **     fillLen = fillLen+
+  **   }   
+  **   return len;
+  ** }
+}
+
+int tcpclose(tcpcb_t *tcb, ui8 *buf,  i32 len)
+{
+  //switch on state 
+  //case ESTABLISHED
+  //  Send FIN packet
+  //  Cihange state to FIN_WAIT1
+  //  wait on rx semaphore
+  //case CLOSE_WAIT 
+  //  Send FIN packet
+  //  Change state to LAST_ACK
+  //  wait on rx semaphore
+}
+
+
+Timeout event handling function
+===============================
+
+void tcpTimeout(tcpcb_t *tcb)
+{
+  //Switch on the state
+  //case SYN_SENT:
+  //  Increment retrys. If retrys reach max, set 'errNo' and wakeup rxsem
+  //  If MAX_RETRYS not reached, prepare SYN packet and send once again.
+  //  Double the timeout and start timer with this new timeout. 
+  //case ESTABLISHED:
+  //  Increment retry, if retry reaches MAX_RETRYS set 'errNo' and wakeup
+  //    rxsem and txsem
+  //  Otherwise retransmit one data packet with max size possible.
+}
+
+Network event handling functions
+================================
+File name :tcp.c
+================
+   Syn event
+   Syn+Ack event
+   Data event
+   Ack event
+   Fin event
+   RST event
+
+void tcpIn(pktbuf_t *pkt)
+{
+  //validate the TCP packet by computing checksum
+  //Compare all the four fields (SRC IP, SRC Port, DST IP, DST Port)
+  //  of the packet with same fields of tcp control block present
+  //  in non-listen list. If match note its tcpcb pointer.
+  //If not found tcp Control block in non-listen list, match with
+  //  listen list (match only DST Port and DST IP of with local Port and
+  //  local IP of listen control block.
+  // Call tcpSynEvtProc(pktbuf_t *pkt, tcbcb_t *tcb) if event is only SYN 
+  // Call tcpSynAckEvtProc(pktbuf_t *pkt, tcbcb_t *tcb) if event is SYN + ACK
+  // A packet may have both DATA and other events such as ACK, FIN and RST.
+  // So for each event call the corresponsing event processing function.
+  // Call tcpDataEvtProc() and if tcbState is FIN_WAIT1 state change that
+  // state to FIN_WAIT2.
+  // Call tcpAckEvtProc()
+  // Call tcpFinEvtProc()
+  // Call tcpRstEvtProc()
+  // If received TCP packet does not match with either listen or non-listen
+  //   tcbs send RESET packet to it.
+}
+
+void tcpSynEvtProc(pktbuf_t *pkt, tcbcb_t *tcb)
+{
+  //If tcb matched is LISTEN TCB, allocate a new tcb structure, and zero it with
+  //  memset(). Create semaphores, allocate rxbuf and txbufs. 
+  **  fill this newtcb rip,rport with packet's localIp,localPort
+  //  Add this to the non-listen tcbs list. Set the state SYN_RCVD. 
+  //  Save window size in 'rwin' field. 
+  //  Set 'nrsn' to syn+1.** (i.e. tcpHdr->seqNo + 1) 
+  //  Chose initial sequence number and save it in 'isn' also set 'nsn' to isn+1
+  //  Prepare and send SYN+ACK packet to the client. (ACK should be nrsn).
+  **  Save Listen TCB in this new TCB's lPtr
+  //If tcb matched is in SYN_RCVD state, this packet could be retransmitted
+  //  one. So prepare and send SYN+ACK packet. 
+}
+
+void tcpSynAckEvtProc(pktbuf_t *pkt, tcbcb_t *tcb)
+{
+  //The matched TCB must be in SYN_SENT state or ESTABLISHED state.
+  //If in SYN_SENT state change it to ESTABLISHED.
+  //  Save window size in 'rwin' field. 
+  //  Set 'nrsn' to syn+1. 
+  //  Prepare and send ACK packet (ACK should be nrsn).
+  //  If state is changed to  ESTABLISHED, find this socket is a client socket
+  //  or server socket.
+  //  This should be  client socket, set 'errNo' to zero and send token to 
+  //  'rxsem' so that that client task that called connect() call will wakeup.
+  **If in ESTABLISHED state   
+  **  i.e when ACK losed and SYN+ACK is a retransmited one.Then send ACK
+      packet again.
+}
+
+void tcpAckEvtProc(pktbuf_t *pkt, tcbcb_t *tcb)
+{
+  //Switch on the state
+  //Case SYN_RCVD
+  //  if ACK of tcp packet is same as 'nsn' then change state to ESTABLISHED.
+  **  add this 'tcb' to listenQ[lqcnt].increment lqcnt.
+  //  This should be sever socket. Get the Listen tcb associated with this
+  //  established socket. This TCB should be present in lPtr of this tcb.
+  //  Send token to 'rxsem' of that listen TCB so that server 
+  //    blocking on accept() call may wakeup. **?? 
+  //Case ESTABLISHED 
+  //  If ACK is for the data sient already, try to send next set of data.
+  //Case FIN_WAIT1(when clent sends FIN,if server resonds with FIN_ACK)
+     //send ACK
+     //change state to TIME_WAIT
+     //Give Token to semaphore.
+  //Case LAST_ACK
+     //Change the state to Closed state
+     //Give taken to rx semaphore
+}
+
+void tcpDataEvtProc(pktbuf_t *pkt, tcbcb_t *tcb)
+{
+  //Verify the sequence number of tcp packet, if it is same as 'nrsn' copy the
+  // data into 'rxbuf' and adjust indexes. 
+  ** memcpy(tcb->rxbuf+rwix,pkt->buf+(eth+ip+tcp),dataLen);
+  ** tcb->rwix = tcb->rwix+dataLen;
+  ** if(tcb->rwix == MAX_RX_BUF)
+  **    tcb->rwix = 0;
+  ** tcb->rcnt = tcb->rcnt+dataLen;
+  //Even if sequence number is less than 'nrsn', copy the data whose sequence
+  //numbers will be greater than or equal to 'nrsn'.  ??????????
+  ** set nrsn to nrsn+len of data.
+  //Prepare and send ACK packet. **(Ack No is nrsn)
+  //Send token to 'rxsem' to wakeup the task blocked on read() call.
+}
+
+void tcpFinEvtProc(pktbuf_t *pkt, tcbcb_t *tcb)
+{
+  //switch on the state
+  //Case ESTABLISHED
+  //  Send ACK
+  //  Change state to CLOSE_WAIT
+  //  Give token to rxsemaphore. 
+  //Case FIN_WAIT1 
+  //  Send ACK
+  //  Change state to CLOSING 
+  //Case FIN_WAIT2 
+  //  Send ACK
+  //  Change state to TIME_WAIT 
+}
+
+
+Timer task 
+==========
+The purpose of the timer task is to support timeout processing.
+This timer task maintains a list of active timers. Each active timer
+is one structure of type alarm_t. This task runs in an infinite
+while loop. In each iteration of the loop, it sleeps for 1 tick (10 ms).
+After coming out of the sleep it decrements timeout field of every active
+timer. If timeout field reaches zero it calls the alarm function and
+removes the active timer from the list.
+
+1. Timer Task design
+====================
+
+1.1. Type definitions and constant definitions
+----------------------------------------------
+
+typedef struct alarm_s
+{
+  INT32           tmoutMilliSecs;
+  INT32           startTick;
+  void            (*fp)(void *arg);
+  void            *arg;
+  struct alarm_s  *pnxt;
+  struct alarm_s  *pprv;
+
+}alarm_t;
+  
+
+1.2. Global Data
+--------------
+alarm_t  alarmList; 
+SEMID    alarmMutex;
+
+
+1.3. Interface Function Definitions
+-----------------------------------
+
+INT32  alarmInit()
+{
+  // create binary semaphore 'alarmMutex' to provide mutual exclusion
+  //   while access to the 'alarmList' linked list.
+  // create the alarmTask
+}
+
+UINT32 alarmStart(INT32 tmoutInMilliSecs, void (*fp)(void *arg), void *arg)
+{
+  // Allocate memory for alarm_t structure
+  // Initilize this structure with the start tick, tmout, fp and arg parameters
+  // Take token from alarmMutex semaphore 
+  // Add this structure to the double linked list alarmList.
+  // Return token to alarmMutex semaphore 
+  // return the address of alram_t structure by type casting as unsigned int
+}
+
+INT32 alarmStop(UINT32 alarmId)
+{
+  // typecast alaramId to pointer to alarm_t structure;
+  // Take token from alarmMutex semaphore 
+  // Get current system tick and subtract current tick from start tick, this
+  //   gives elapsed time.
+  // Remove the structure from the double linked list and free it.
+  // Return token to alarmMutex semaphore 
+  // Return elapsed time in ticks 
+}
+
+
+1.4. Local or Private Function Definitions
+------------------------------------------
+void *alarmTask (void *arg)
+{
+   while(1)
+   {
+     // Sleep for one tick by calling taskDelay(1); 
+     // When 1 tick (10 milli sec) sleept is done, traverse through the linked
+     //   list and decrement tmoutMilliSecs by 10. If it reaches less than
+     //   or equal to zero, call the function with the argument present
+     //   in the alarm_t structure. Finally remove this from the linked list
+     //   and free it. 
+     // Protect the above access with alarmMutex semaphore 
+   }
+}
+
+

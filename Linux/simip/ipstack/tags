@@ -1,0 +1,359 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.5.4	//
+ACCEPT_ALL	rtldrv.c	73;"	d	file:
+ACCEPT_BROADCAST	rtldrv.c	70;"	d	file:
+ACCEPT_MULTICAST	rtldrv.c	71;"	d	file:
+ACCEPT_MY_PHYS	rtldrv.c	72;"	d	file:
+AF_INET	nwstk.h	118;"	d
+ARP_ENTRY_FREE	arp.c	27;"	d	file:
+ARP_ENTRY_PENDING	arp.c	28;"	d	file:
+ARP_ENTRY_RESOLVED	arp.c	29;"	d	file:
+ARP_PKT	nwstk.h	15;"	d
+ARP_REQ	arp.c	31;"	d	file:
+ARP_RESP	arp.c	32;"	d	file:
+BIND_BIT	nwstk.h	114;"	d
+CFG9346	rtldrv.c	31;"	d	file:
+CHIPCMD	rtldrv.c	23;"	d	file:
+CMD_RESET	rtldrv.c	76;"	d	file:
+CMD_RX_ENB	rtldrv.c	74;"	d	file:
+CMD_TX_ENB	rtldrv.c	75;"	d	file:
+CONFIG0	rtldrv.c	32;"	d	file:
+CONFIG1	rtldrv.c	33;"	d	file:
+CONNECT_BIT	nwstk.h	115;"	d
+DEV_ID	rtldrv.c	61;"	d	file:
+ETH_BADPKT_CNT	ethdrv.h	17;"	d
+ETH_BADPKT_CNT	rtldrv.h	17;"	d
+ETH_BASE_ERR	ethdrv.h	6;"	d
+ETH_BASE_ERR	rtldrv.h	6;"	d
+ETH_CARD_NOT_FOUND_ERR	ethdrv.h	8;"	d
+ETH_CARD_NOT_FOUND_ERR	rtldrv.h	8;"	d
+ETH_HDR_LEN	nwstk.h	11;"	d
+ETH_INV_CMD_ERR	ethdrv.h	9;"	d
+ETH_INV_CMD_ERR	rtldrv.h	9;"	d
+ETH_ISR_CNT	ethdrv.h	13;"	d
+ETH_ISR_CNT	rtldrv.h	13;"	d
+ETH_ISR_INSTALL_ERR	ethdrv.h	7;"	d
+ETH_ISR_INSTALL_ERR	rtldrv.h	7;"	d
+ETH_MAX_STATS	ethdrv.h	19;"	d
+ETH_MAX_STATS	rtldrv.h	19;"	d
+ETH_RESET_NOT_COMPLETE_ERR	ethdrv.h	10;"	d
+ETH_RESET_NOT_COMPLETE_ERR	rtldrv.h	10;"	d
+ETH_RXOK_CNT	ethdrv.h	14;"	d
+ETH_RXOK_CNT	rtldrv.h	14;"	d
+ETH_TOOLONG_CNT	ethdrv.h	16;"	d
+ETH_TOOLONG_CNT	rtldrv.h	16;"	d
+ETH_TXERR_CNT	ethdrv.h	18;"	d
+ETH_TXERR_CNT	rtldrv.h	18;"	d
+ETH_TXOK_CNT	ethdrv.h	15;"	d
+ETH_TXOK_CNT	rtldrv.h	15;"	d
+FALSE	arp.c	22;"	d	file:
+FALSE	rtldrv.c	11;"	d	file:
+FREE	nwstk.h	122;"	d
+FREE	rtldrv.c	10;"	d	file:
+HDR_LEN	nwstk.h	116;"	d
+HLTCLK	rtldrv.c	34;"	d	file:
+HW_ADRS_LEN	nwstk.h	10;"	d
+ICMP_ECHO_REQ	icmp.c	33;"	d	file:
+ICMP_ECHO_RESP	icmp.c	32;"	d	file:
+IFC_UP	iface.c	12;"	d	file:
+INT16	nwstk.h	/^typedef  short           INT16;$/;"	t
+INT32	nwstk.h	/^typedef  int             INT32;$/;"	t
+INT8	nwstk.h	/^typedef  char            INT8;$/;"	t
+INTRMASK	rtldrv.c	26;"	d	file:
+INTRSTATUS	rtldrv.c	27;"	d	file:
+IOCTL_DISABLE_PROMISC	rtldrv.h	29;"	d
+IOCTL_DISABLE_RECEPTION	ethdrv.h	26;"	d
+IOCTL_DISABLE_RECEPTION	rtldrv.h	26;"	d
+IOCTL_ENABLE_PROMISC	rtldrv.h	28;"	d
+IOCTL_ENABLE_RECEPTION	ethdrv.h	25;"	d
+IOCTL_ENABLE_RECEPTION	rtldrv.h	25;"	d
+IOCTL_ETH_MAX	rtldrv.h	30;"	d
+IOCTL_GET_MAC_ADDRS	ethdrv.h	23;"	d
+IOCTL_GET_MAC_ADDRS	rtldrv.h	23;"	d
+IOCTL_GET_RXQ_PKTS	ethdrv.h	27;"	d
+IOCTL_GET_RXQ_PKTS	rtldrv.h	27;"	d
+IOCTL_GET_STATISTICS	ethdrv.h	24;"	d
+IOCTL_GET_STATISTICS	rtldrv.h	24;"	d
+IP_ADRS_LEN	nwstk.h	9;"	d
+IP_HDR_LEN	nwstk.h	12;"	d
+IP_PKT	nwstk.h	14;"	d
+L1	sysInit.S	/^L1:$/;"	l
+LOCAL	arp.c	23;"	d	file:
+LOCAL	ip.c	8;"	d	file:
+Lfe1	sysInit.S	/^Lfe1:$/;"	l
+MAC0	rtldrv.c	16;"	d	file:
+MAXSIZE	arp.c	20;"	d	file:
+MAX_ARP_ENTRIES	arp.c	25;"	d	file:
+MAX_IFACES	nwstk.h	69;"	d
+MAX_PKT_BUFS	pktbuf.c	4;"	d	file:
+MAX_PKT_BUF_SIZE	pktbuf.h	2;"	d
+MAX_SOCKETS	nwstk.h	121;"	d
+MCA	rtldrv.c	17;"	d	file:
+NULL	pktbuf.c	3;"	d	file:
+PROTO_ICMP	nwstk.h	17;"	d
+PROTO_TCP	nwstk.h	18;"	d
+PROTO_UDP	nwstk.h	19;"	d
+RER	rtldrv.c	65;"	d	file:
+ROK	rtldrv.c	64;"	d	file:
+RXBUF	rtldrv.c	20;"	d	file:
+RXBUFADDR	rtldrv.c	25;"	d	file:
+RXBUFPTR	rtldrv.c	24;"	d	file:
+RXCONFIG	rtldrv.c	29;"	d	file:
+RXEARLYCNT	rtldrv.c	21;"	d	file:
+RXEARLYSTATUS	rtldrv.c	22;"	d	file:
+RXMISSED	rtldrv.c	30;"	d	file:
+RXOVW	rtldrv.c	68;"	d	file:
+RX_BUF_LEN	rtldrv.c	83;"	d	file:
+RX_BUF_LEN_IDX	rtldrv.c	82;"	d	file:
+RX_DMA_BURST	rtldrv.c	79;"	d	file:
+RX_FIFO_THRESH	rtldrv.c	78;"	d	file:
+RxBadAlign	rtldrv.c	/^  RxBadAlign  = 0x0002, $/;"	e	enum:RxStatusBits	file:
+RxBadSymbol	rtldrv.c	/^  RxBadSymbol = 0x0020, $/;"	e	enum:RxStatusBits	file:
+RxBroadcast	rtldrv.c	/^  RxBroadcast = 0x2000,$/;"	e	enum:RxStatusBits	file:
+RxCRCErr	rtldrv.c	/^  RxCRCErr    = 0x0004,$/;"	e	enum:RxStatusBits	file:
+RxMulticast	rtldrv.c	/^  RxMulticast = 0x8000, $/;"	e	enum:RxStatusBits	file:
+RxPhysical	rtldrv.c	/^  RxPhysical  = 0x4000, $/;"	e	enum:RxStatusBits	file:
+RxRunt	rtldrv.c	/^  RxRunt      = 0x0010, $/;"	e	enum:RxStatusBits	file:
+RxStatusBits	rtldrv.c	/^enum RxStatusBits $/;"	g	file:
+RxStatusOK	rtldrv.c	/^  RxStatusOK  = 0x0001,$/;"	e	enum:RxStatusBits	file:
+RxTooLong	rtldrv.c	/^  RxTooLong   = 0x0008, $/;"	e	enum:RxStatusBits	file:
+SOCK_DGRAM	nwstk.h	119;"	d
+SOCK_STREAM	nwstk.h	120;"	d
+SUCCESS	arp.c	19;"	d	file:
+SUCCESS	nwstk.h	113;"	d
+SUCCESS	rtldrv.c	13;"	d	file:
+TER	rtldrv.c	67;"	d	file:
+TOK	rtldrv.c	66;"	d	file:
+TRUE	arp.c	21;"	d	file:
+TRUE	rtldrv.c	12;"	d	file:
+TXADDR0	rtldrv.c	19;"	d	file:
+TXCONFIG	rtldrv.c	28;"	d	file:
+TXSTATUS0	rtldrv.c	18;"	d	file:
+TX_DMA_BURST	rtldrv.c	80;"	d	file:
+TX_FIFO_THRESH	rtldrv.c	85;"	d	file:
+TX_FLAG	rtldrv.c	86;"	d	file:
+TxAborted	rtldrv.c	/^  TxAborted     = 0x40000000, $/;"	e	enum:TxStatusBits	file:
+TxCarrierLost	rtldrv.c	/^  TxCarrierLost = 0x80000000$/;"	e	enum:TxStatusBits	file:
+TxHostOwns	rtldrv.c	/^  TxHostOwns    = 0x2000, $/;"	e	enum:TxStatusBits	file:
+TxOutOfWindow	rtldrv.c	/^  TxOutOfWindow = 0x20000000, $/;"	e	enum:TxStatusBits	file:
+TxStatOK	rtldrv.c	/^  TxStatOK      = 0x8000,$/;"	e	enum:TxStatusBits	file:
+TxStatusBits	rtldrv.c	/^enum TxStatusBits $/;"	g	file:
+TxUnderrun	rtldrv.c	/^  TxUnderrun    = 0x4000, $/;"	e	enum:TxStatusBits	file:
+UDP_PROTO	nwstk.h	117;"	d
+UINT16	nwstk.h	/^typedef  unsigned short   UINT16;$/;"	t
+UINT32	nwstk.h	/^typedef  unsigned int     UINT32;$/;"	t
+UINT8	nwstk.h	/^typedef  unsigned char    UINT8;$/;"	t
+USED	nwstk.h	123;"	d
+VEN_ID	rtldrv.c	60;"	d	file:
+___gnu_compiled_c	sysInit.S	/^___gnu_compiled_c:$/;"	l
+a	main.c	/^int a=134;$/;"	v
+allocLocalPort	udp.c	/^int allocLocalPort()$/;"	f
+allocSocket	socket.c	/^int allocSocket(int *sockfd)$/;"	f
+applicationStart	app.c	/^void applicationStart()$/;"	f
+arpAddEntry	arp.c	/^LOCAL int arpAddEntry(UINT8 *ipAdrs, UINT8 *hwAdrs)$/;"	f
+arpDispTbl	arp.c	/^LOCAL int arpDispTbl(int argc, char * argv[])$/;"	f
+arpEntry_t	arp.c	/^}arpEntry_t;$/;"	t	file:
+arpFindEntry	arp.c	/^LOCAL int arpFindEntry(UINT8 *ipAdrs, int *index)$/;"	f
+arpGetFreeEntry	arp.c	/^LOCAL int arpGetFreeEntry(int *indx)$/;"	f
+arpHitCnt	arp.c	/^LOCAL UINT32  arpInCnt,arpInReqCnt, arpInReqMatchCnt, arpInRespCnt, arpHitCnt;$/;"	v
+arpIn	arp.c	/^void arpIn(pktBuf_t *pkt)$/;"	f
+arpInCnt	arp.c	/^LOCAL UINT32  arpInCnt,arpInReqCnt, arpInReqMatchCnt, arpInRespCnt, arpHitCnt;$/;"	v
+arpInReqCnt	arp.c	/^LOCAL UINT32  arpInCnt,arpInReqCnt, arpInReqMatchCnt, arpInRespCnt, arpHitCnt;$/;"	v
+arpInReqMatchCnt	arp.c	/^LOCAL UINT32  arpInCnt,arpInReqCnt, arpInReqMatchCnt, arpInRespCnt, arpHitCnt;$/;"	v
+arpInRespCnt	arp.c	/^LOCAL UINT32  arpInCnt,arpInReqCnt, arpInReqMatchCnt, arpInRespCnt, arpHitCnt;$/;"	v
+arpInit	arp.c	/^void arpInit()$/;"	f
+arpPkt_t	nwstk.h	/^}arpPkt_t;$/;"	t
+arpReqSentCnt	arp.c	/^LOCAL UINT32  arpSendIpPktCnt, arpReqSentCnt, arpSentIpPktWRCnt;$/;"	v
+arpSendIpPkt	arp.c	/^int arpSendIpPkt(pktBuf_t *pkt, UINT8 *nxtHopIpAdrs, iface_t *pIf)$/;"	f
+arpSendIpPktCnt	arp.c	/^LOCAL UINT32  arpSendIpPktCnt, arpReqSentCnt, arpSentIpPktWRCnt;$/;"	v
+arpSentIpPktWRCnt	arp.c	/^LOCAL UINT32  arpSendIpPktCnt, arpReqSentCnt, arpSentIpPktWRCnt;$/;"	v
+arpStat	arp.c	/^LOCAL int arpStat(int argc, char * argv[])$/;"	f
+arpTbl	arp.c	/^LOCAL arpEntry_t arpTbl[MAX_ARP_ENTRIES];$/;"	v
+bind	socket.c	/^int bind(int sockfd, struct sockaddr_in *addr, int addLen)$/;"	f
+bssEnd	usrcfg.c	/^unsigned char *bssEnd = 2;$/;"	v
+bssStart	usrcfg.c	/^unsigned char *bssStart = 1;$/;"	v
+buf	pktbuf.h	/^  unsigned char     buf[MAX_PKT_BUF_SIZE];$/;"	m	struct:pktBuf_s
+busy	rtldrv.c	/^  int              busy;$/;"	m	file:
+cksum	nwstk.h	/^  UINT16  cksum;$/;"	m
+cnt	pktbuf.h	/^  int      cnt;$/;"	m	struct:pktQ_s
+computeChecksum	ip.c	/^UINT16 computeChecksum(UINT8 *ptr,int len)$/;"	f
+connect	socket.c	/^int connect(int sockfd, struct sockaddr_in *addr, int addLen)$/;"	f
+cur_desc	rtldrv.c	/^  int              cur_desc;$/;"	m	file:
+data	icmp.c	/^  UINT8   data[1];$/;"	m	file:
+dispIface	iface.c	/^void dispIface(iface_t *pif)$/;"	f
+displayCtlBlk	udp.c	/^int displayCtlBlk()$/;"	f
+displaysocket	socket.c	/^int displaysocket()$/;"	f
+dport	nwstk.h	/^  UINT16  dport;$/;"	m
+dstAdrs	nwstk.h	/^  UINT8   dstAdrs[4];$/;"	m
+dstHwa	nwstk.h	/^  unsigned char  dstHwa[6];$/;"	m
+echoId	icmp.c	/^  UINT16  echoId;$/;"	m	file:
+echoSeq	icmp.c	/^  UINT16  echoSeq;$/;"	m	file:
+ethDrv_t	rtldrv.c	/^}ethDrv_t;$/;"	t	file:
+ethHdr_t	nwstk.h	/^}ethHdr_t;$/;"	t
+ethIoctl	rtldrv.c	/^int ethIoctl(int argc , char *argv[])$/;"	f
+ethPktDrvInit	rtldrv.c	/^int ethPktDrvInit(char *name, ui32 iobase, ui32 irq)$/;"	f
+ethirq	rtldrv.c	/^  int              ethirq;$/;"	m	file:
+flagFrag	nwstk.h	/^  UINT16  flagFrag;$/;"	m
+flags	nwstk.h	/^  UINT32  flags;$/;"	m
+frQ	pktbuf.c	/^static  pktQ_t frQ;$/;"	v	file:
+freeBufs	pktbuf.c	/^void freeBufs()$/;"	f
+htonl	nwutil.c	/^unsigned int htonl(unsigned int temp)$/;"	f
+htons	nwutil.c	/^unsigned short htons(unsigned short s)$/;"	f
+hwAdrs	arp.c	/^  UINT8     hwAdrs[HW_ADRS_LEN];$/;"	m	file:
+hwAdrs	rtldrv.c	/^  unsigned char    hwAdrs[6];$/;"	m	file:
+hwType	nwstk.h	/^  unsigned short hwType;$/;"	m
+hwaLen	nwstk.h	/^  unsigned char  hwaLen;$/;"	m
+icmpChksum	icmp.c	/^  UINT16  icmpChksum;$/;"	m	file:
+icmpCode	icmp.c	/^  UINT8   icmpCode;$/;"	m	file:
+icmpEcho_t	icmp.c	/^}icmpEcho_t;$/;"	t	file:
+icmpHdr_t	icmp.c	/^}icmpHdr_t;$/;"	t	file:
+icmpIn	icmp.c	/^void icmpIn(pktBuf_t *pkt)$/;"	f
+icmpInit	icmp.c	/^int icmpInit()$/;"	f
+icmpSendEchoReply	icmp.c	/^void icmpSendEchoReply(pktBuf_t *pkt, icmpHdr_t *pic)$/;"	f
+icmpType	icmp.c	/^  UINT8   icmpType;$/;"	m	file:
+ifConfInit	iface.c	/^void ifConfInit()$/;"	f
+ifConfig	iface.c	/^void ifConfig(int argc, char *argv[])$/;"	f
+ifNum	pktbuf.h	/^  int               ifNum;$/;"	m	struct:pktBuf_s
+ifNum	rtldrv.c	/^  int              ifNum;$/;"	m	file:
+ifaceInit	iface.c	/^ifaceInit()$/;"	f
+ifaceShow	iface.c	/^void ifaceShow(int argc, char *argv[])$/;"	f
+ifaceTbl	iface.c	/^iface_t  *ifaceTbl[MAX_IFACES];$/;"	v
+iface_t	nwstk.h	/^}iface_t;$/;"	t
+ifcRegister	iface.c	/^int  ifcRegister(char *name, void *pDev, int (*sendFP)(void *, pktBuf_t *),$/;"	f
+in_addr	nwstk.h	/^struct in_addr$/;"	s
+inet_addr	nwutil.c	/^int inet_addr(char *str)$/;"	f
+installNetDrivers	rtldrv.c	/^int installNetDrivers()$/;"	f
+iobase	rtldrv.c	/^  int              iobase;$/;"	m	file:
+ioctlFP	nwstk.h	/^  INT32   (*ioctlFP)(void *, int cmd, void *);$/;"	m
+ip2bin	nwutil.c	/^int ip2bin(char *str, UINT8 *ch)$/;"	f
+ipAdrs	arp.c	/^  UINT8     ipAdrs[IP_ADRS_LEN];$/;"	m	file:
+ipAdrs	nwstk.h	/^  UINT8   ipAdrs[4];$/;"	m
+ipHdr_t	nwstk.h	/^} ipHdr_t;   $/;"	t
+ipHhtons	ip.c	/^void ipHhtons(ipHdr_t *ipHdr)$/;"	f
+ipHntohs	ip.c	/^void ipHntohs(ipHdr_t *ipHdr)$/;"	f
+ipIn	ip.c	/^int ipIn(pktBuf_t *pkt)$/;"	f
+ipInit	ip.c	/^ipInit()$/;"	f
+ipPktCnt	ip.c	/^LOCAL UINT32 ipPktCnt, ipPktTcp, ipPktUdp, ipPktIcmp, ipPktUnKnown;$/;"	v
+ipPktIcmp	ip.c	/^LOCAL UINT32 ipPktCnt, ipPktTcp, ipPktUdp, ipPktIcmp, ipPktUnKnown;$/;"	v
+ipPktTcp	ip.c	/^LOCAL UINT32 ipPktCnt, ipPktTcp, ipPktUdp, ipPktIcmp, ipPktUnKnown;$/;"	v
+ipPktUdp	ip.c	/^LOCAL UINT32 ipPktCnt, ipPktTcp, ipPktUdp, ipPktIcmp, ipPktUnKnown;$/;"	v
+ipPktUnKnown	ip.c	/^LOCAL UINT32 ipPktCnt, ipPktTcp, ipPktUdp, ipPktIcmp, ipPktUnKnown;$/;"	v
+ipSendPkt	ip.c	/^void ipSendPkt(pktBuf_t *pkt, UINT8 *dstAddr, UINT8 protocol)$/;"	f
+ipStat	ip.c	/^LOCAL int ipStat(int argc, char * argv[])$/;"	f
+isrRx	rtldrv.c	/^static int isrRx(ethDrv_t *pCb)$/;"	f	file:
+isrTx	rtldrv.c	/^static int isrTx(ethDrv_t *pCb)$/;"	f	file:
+len	nwstk.h	/^  UINT16  len;$/;"	m
+len	pktbuf.h	/^  int               len;$/;"	m	struct:pktBuf_s
+lip	nwstk.h	/^  UINT8           lip[4];$/;"	m	struct:udpCb_s
+lport	nwstk.h	/^  UINT16          lport;$/;"	m	struct:udpCb_s
+macAdrs	nwstk.h	/^  UINT8   macAdrs[6];$/;"	m
+main	main.c	/^main()$/;"	f
+name	nwstk.h	/^  INT8    name[16];$/;"	m
+netEnQ	nwstk.c	/^void netEnQ(pktBuf_t *pkt)$/;"	f
+netTask	nwstk.c	/^void netTask()$/;"	f
+noOfSymbols	symtable.c	/^int noOfSymbols = 0;$/;"	v
+ntoH	nwutil.c	/^void ntoH(unsigned char *ptr,int len)$/;"	f
+ntohs	nwutil.c	/^unsigned short ntohs(unsigned short s)$/;"	f
+operation	nwstk.h	/^  unsigned short operation;$/;"	m
+pCbpktQ	nwstk.h	/^  pktQ_t         *pCbpktQ;$/;"	m	struct:udpCb_s
+pDev	nwstk.h	/^  void    *pDev;$/;"	m
+pHd	pktbuf.h	/^  pktBuf_t *pHd;$/;"	m	struct:pktQ_s
+pNext	nwstk.h	/^  struct udpCb_s *pNext;$/;"	m	struct:udpCb_s
+pNxt	pktbuf.h	/^  struct pktBuf_s   *pNxt;$/;"	m	struct:pktBuf_s
+pSockCb	nwstk.h	/^  void   *pSockCb;$/;"	m
+pTl	pktbuf.h	/^  pktBuf_t *pTl;$/;"	m	struct:pktQ_s
+ping	icmp.c	/^int ping(int argc,char *argv[])$/;"	f
+pktAlloc	pktbuf.c	/^pktBuf_t *pktAlloc()$/;"	f
+pktBufInit	pktbuf.c	/^void pktBufInit()$/;"	f
+pktBuf_s	pktbuf.h	/^typedef struct pktBuf_s$/;"	s
+pktBuf_t	pktbuf.h	/^}pktBuf_t;$/;"	t
+pktBufs	pktbuf.c	/^static  pktBuf_t pktBufs[MAX_PKT_BUFS];$/;"	v	file:
+pktCnt	nwstk.h	/^  UINT16          pktCnt;$/;"	m	struct:udpCb_s
+pktDeQ	pktbuf.c	/^pktBuf_t *pktDeQ(pktQ_t *pPktQ)$/;"	f
+pktEnQ	pktbuf.c	/^void pktEnQ(pktQ_t *pPktQ, pktBuf_t *pPkt)$/;"	f
+pktFree	pktbuf.c	/^void pktFree(pktBuf_t *pPkt)$/;"	f
+pktId	nwstk.h	/^  UINT16  pktId;$/;"	m
+pktLen	nwstk.h	/^  UINT16  pktLen;$/;"	m
+pktQ	arp.c	/^  pktQ_t    pktQ;$/;"	m	file:
+pktQ_s	pktbuf.h	/^typedef struct pktQ_s$/;"	s
+pktQ_t	pktbuf.h	/^}pktQ_t;$/;"	t
+printBuf	nwutil.c	/^void printBuf(unsigned char *buf, int len)$/;"	f
+printEthCnts	rtldrv.c	/^int printEthCnts(int argc , char *argv[])$/;"	f
+proto	nwstk.h	/^  UINT8   proto;$/;"	m
+protoLen	nwstk.h	/^  unsigned char  protoLen;$/;"	m
+protoType	nwstk.h	/^  unsigned short protoType;$/;"	m
+rbIndx	rtldrv.c	/^  unsigned int     rbIndx;$/;"	m	file:
+recv	socket.c	/^int recv(int sockfd, char *buf,  int len, int flags)$/;"	f
+recvfrom	socket.c	/^int recvfrom(int sockfd, char *buf,  int len, int flags,                                                                struct sockaddr_in *sadd,int *addrLen)$/;"	f
+registerEthCliCmds	rtldrv.c	/^void registerEthCliCmds()$/;"	f
+ringBuf	rtldrv.c	/^  unsigned char    ringBuf[RX_BUF_LEN+16]; $/;"	m	file:
+rip	nwstk.h	/^  UINT8           rip[4];$/;"	m	struct:udpCb_s
+rport	nwstk.h	/^  UINT16          rport;$/;"	m	struct:udpCb_s
+rtlIoctl	rtldrv.c	/^int rtlIoctl(ethDrv_t *pCb, int cmd, void *buf)$/;"	f
+rtlIsr	rtldrv.c	/^static void rtlIsr(ethDrv_t *pCb)$/;"	f	file:
+rtlSend	rtldrv.c	/^void rtlSend(ethDrv_t *pCb, pktBuf_t *pkt)$/;"	f
+rtlStartTx	rtldrv.c	/^static int rtlStartTx(ethDrv_t *pCb)$/;"	f	file:
+rxQ	nwstk.c	/^static  pktQ_t  rxQ;$/;"	v	file:
+s_addr	nwstk.h	/^  unsigned int s_addr;$/;"	m	struct:in_addr
+semID	nwstk.h	/^  SEM_ID          semID;$/;"	m	struct:udpCb_s
+semid	nwstk.c	/^static  SEM_ID  semid;$/;"	v	file:
+send	socket.c	/^int send(int sockfd, char *buf,  int len, int flags)$/;"	f
+sendFP	nwstk.h	/^  INT32   (*sendFP)(void *, pktBuf_t *);$/;"	m
+senderHwa	nwstk.h	/^  unsigned char  senderHwa[6];$/;"	m
+senderPra	nwstk.h	/^  unsigned char  senderPra[4];$/;"	m
+sendto	socket.c	/^int sendto(int sockfd, char *buf,  int len, int flags, $/;"	f
+serDevName	usrcfg.c	/^char serDevName[] = "\/dev\/ttyS0";$/;"	v
+simnetInit	nwstk.c	/^int simnetInit()$/;"	f
+sin_addr	nwstk.h	/^  struct in_addr sin_addr;$/;"	m	struct:sockaddr_in
+sin_family	nwstk.h	/^  short  sin_family;$/;"	m	struct:sockaddr_in
+sin_port	nwstk.h	/^  UINT16 sin_port;$/;"	m	struct:sockaddr_in
+sin_zero	nwstk.h	/^  char   sin_zero[8];$/;"	m	struct:sockaddr_in
+sockType	nwstk.h	/^  UINT16 sockType;$/;"	m
+sock_t	nwstk.h	/^}sock_t;$/;"	t
+sockaddr_in	nwstk.h	/^struct sockaddr_in$/;"	s
+socket	socket.c	/^int socket(int domain, int type, int protocol)$/;"	f
+socketClose	socket.c	/^int socketClose(int sockfd)$/;"	f
+sockets	socket.c	/^sock_t  sockets[MAX_SOCKETS];$/;"	v
+sport	nwstk.h	/^  UINT16  sport;$/;"	m
+srcAdrs	nwstk.h	/^  UINT8   srcAdrs[4];$/;"	m
+srcHwa	nwstk.h	/^  unsigned char  srcHwa[6];$/;"	m
+statStrs	rtldrv.c	/^char * statStrs[] = { $/;"	v
+state	arp.c	/^  UINT32    state;$/;"	m	file:
+state	nwstk.h	/^  UINT16          state;$/;"	m	struct:udpCb_s
+statistics	rtldrv.c	/^  unsigned int     statistics[ETH_MAX_STATS];$/;"	m	file:
+status	nwstk.h	/^  UINT16 status;$/;"	m
+symbols	symtable.c	/^symTab_t symbols[1000]   = $/;"	v
+sysInit	sysInit.S	/^sysInit:$/;"	l
+targetHwa	nwstk.h	/^  unsigned char  targetHwa[6];$/;"	m
+targetPra	nwstk.h	/^  unsigned char  targetPra[4];$/;"	m
+testIp	iface.c	/^unsigned char testIp[4] = {192,168,2,100};$/;"	v
+tos	nwstk.h	/^  UINT8   tos;$/;"	m
+ttl	nwstk.h	/^  UINT8   ttl;$/;"	m
+txQ	rtldrv.c	/^  pktQ_t           txQ;$/;"	m	file:
+txpkt	rtldrv.c	/^  char             txpkt[1528];$/;"	m	file:
+type	nwstk.h	/^  unsigned short type;$/;"	m
+udpBind	udp.c	/^int udpBind(udpCb_t *pSockCb, struct sockaddr_in *addr, int addLen)$/;"	f
+udpCbList	udp.c	/^udpCb_t   *udpCbList;$/;"	v
+udpCb_s	nwstk.h	/^typedef struct udpCb_s$/;"	s
+udpCb_t	nwstk.h	/^}udpCb_t;$/;"	t
+udpCli	udpSrv.c	/^void udpCli()$/;"	f
+udpConnect	udp.c	/^int udpConnect(udpCb_t *pSockCb, struct sockaddr_in *addr, int addLen)$/;"	f
+udpEcho	udpSrv.c	/^void udpEcho()$/;"	f
+udpEchoSrv	udpSrv.c	/^int udpEchoSrv()$/;"	f
+udpHdr_t	nwstk.h	/^}udpHdr_t;$/;"	t
+udpHhtons	udp.c	/^void udpHhtons(udpHdr_t *pUh)$/;"	f
+udpHntohs	udp.c	/^void udpHntohs(udpHdr_t *pUh)$/;"	f
+udpIn	udp.c	/^void udpIn(pktBuf_t *pkt)$/;"	f
+udpRecvFrom	udp.c	/^int udpRecvFrom(udpCb_t *pucb, INT8 *buf, int len, UINT32 flags, $/;"	f
+udpSearchCb	udp.c	/^udpCb_t *udpSearchCb(UINT16 dport)$/;"	f
+udpSendto	udp.c	/^int udpSendto(udpCb_t *pucb, INT8 *buf, INT32 len, INT32 flags,$/;"	f
+udpSocket	udp.c	/^udpCb_t *udpSocket(int protocol)$/;"	f
+udpclose	udp.c	/^int udpclose(udpCb_t *pSockCb)$/;"	f
+unitNum	nwstk.h	/^  UINT32  unitNum;$/;"	m
+usrInit	usrcfg.c	/^usrInit()$/;"	f
+usrRoot	usrcfg.c	/^void usrRoot()$/;"	f
+verlen	nwstk.h	/^  UINT8   verlen;$/;"	m
